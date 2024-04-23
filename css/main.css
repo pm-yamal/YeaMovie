@@ -29,6 +29,7 @@ body {
 
 }
 .card {
+    overflow: hidden;
     padding-bottom: 15px;
     width: 200px;
     border-radius: 6px;
@@ -38,14 +39,28 @@ body {
 }
 
 .card__img {
-
+    margin-bottom: 15px;
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 6px;
 }
+
 .card__title {
-
+    padding: 0 5px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 300;
 }
+
 .card__year {
+    margin-bottom: 5px;
+    color: rgb(7, 150, 252);
+    font-size: 14px;
+    font-weight: 300;
 
 }
+
 .card__rate {
 
 }
