@@ -1,0 +1,51 @@
+@import './reset.css';
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+body {
+    font-family: "Oswald", sans-serif;
+    background-color: #000;
+    color: #fff;
+    background-image: url('./../img/bg.png');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: 0px;
+}
+
+.container-left {
+    padding: 25px 15px 100px;
+    width: 930px;
+    min-height: 100vh;
+    border-right: 1px solid #162344;
+}
+
+.title-1 {
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.films {
+
+}
+.card {
+    padding-bottom: 15px;
+    width: 200px;
+    border-radius: 6px;
+    background-color: rgb(22, 22, 22);
+    text-align: center;
+    cursor: pointer;
+}
+
+.card__img {
+
+}
+.card__title {
+
+}
+.card__year {
+
+}
+.card__rate {
+
+}
