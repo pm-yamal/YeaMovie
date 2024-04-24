@@ -26,6 +26,11 @@ body {
 }
 
 .films {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 30px;
+    row-gap: 30px;
+    margin-bottom: 30px;
 
 }
 .card {
@@ -36,6 +41,13 @@ body {
     background-color: rgb(22, 22, 22);
     text-align: center;
     cursor: pointer;
+    transition: transform 0.2s ease-in, background-color 0.2s ease-in, box-shadow 0.2s ease-in;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    background-color: rgb(35, 35, 35);
+    box-shadow: 0px 10px 20px rgba(0, 65, 152, 0.7);
 }
 
 .card__img {
@@ -58,9 +70,23 @@ body {
     color: rgb(7, 150, 252);
     font-size: 14px;
     font-weight: 300;
-
 }
 
 .card__rate {
+    font-size: 14px;
+    color: rgb(240, 246, 75);
+}
 
+.show-more {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 30px;
+    border-radius: 6px;
+    background-color: rgb(16, 85, 205);
+    color: #fff;
+    transition: opacity 0.2s ease-in;
+}
+
+.show-more:hover {
+    opacity: 0.8;
 }
