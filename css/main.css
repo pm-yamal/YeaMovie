@@ -1,4 +1,5 @@
 @import './reset.css';
+@import './loader.css';
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 
 body {
@@ -89,4 +90,48 @@ body {
 
 .show-more:hover {
     opacity: 0.8;
+}
+
+.loader-wrapper {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.container-right {
+    position: fixed;
+    left: 930px;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    width: 800px;
+    background-color: rgba(5, 56, 185, 0.2);
+    border-right: 1px solid #162344;
+}
+
+.btn-close {
+    
+}
+
+.film {
+
+}
+
+.film__title {
+
+}
+
+.film__img {
+
+}
+
+.film__desc {
+
+}
+
+.film__details {
+
+}
+
+.film__text {
+
 }
