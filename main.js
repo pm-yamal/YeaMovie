@@ -23,8 +23,16 @@ async function fetchAndRenderFilms () {
         console.log(data.items);
         for (item of data.items) {
             console.log(item);
+            const html = `<div class="card">
+            <img src=${item.posterUrlPreview} alt="Обливион" class="card__img">
+            <h3 class="card__title">${item.nameRu}</h3>
+            <p class="card__year">${item.year}</p>
+            <p class="card__rate">Рейтинг: ${item.ratingKinopoisk}</p>
+            </div>`;
+            filmsWrapper.insertAdjacentHTML('beforeend', html);
         }
-    } catch (err) {
+    } 
+    catch (err) {
         console.log(err);
     }
 }
@@ -32,4 +40,3 @@ fetchAndRenderFilms();
 
 // поиск э-та с классом .films
 const filmsWrapper = document.querySelector('.films');
-console.log(filmsWrapper);
