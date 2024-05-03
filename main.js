@@ -28,8 +28,7 @@ let page = 1;
 async function fetchAndRenderFilms() {
     try {
         // show preloader
-        loader.classList.remove('none');
-        console.log(page);
+        loader.classList.remove('none');        
 
         // fetch films data
         const data = await fetchData(url + `collections?page=${page}`, options);
@@ -37,9 +36,7 @@ async function fetchAndRenderFilms() {
         // увеличение счетчика страниц отображения списка фильмов
         if (data.totalPages > 1) {
             page += 1;
-        }
-        console.log(data);
-        console.log(page);        
+        }               
 
         // проверка на доп. страницы и отображение кнопки, если страниц больше чем 1
         if (data.totalPages > 1) {
@@ -73,13 +70,25 @@ async function fetchData(url, options) {
 
 // render films on page
 function renderFilms(items) {
-    for (item of items) {     
-        const html = `<div class="card">
+    for (item of items) {
+        console.log(item);     
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.id = item.kinopoiskId;
+        // клик по карточке с фильмом
+        card.onclick = openFilmDetails;        
+
+        const html = `
         <img src=${item.posterUrlPreview} alt="Обливион" class="card__img">
         <h3 class="card__title">${item.nameRu}</h3>
         <p class="card__year">${item.year}</p>
         <p class="card__rate">Рейтинг: ${item.ratingKinopoisk}</p>
-        </div>`;
-        filmsWrapper.insertAdjacentHTML('beforeend', html);
+        `;
+        card.insertAdjacentHTML('afterbegin', html);
+        filmsWrapper.insertAdjacentElement('beforeend', card);        
     }
+}
+
+function openFilmDetails() {
+    console.log('It works!');
 }
