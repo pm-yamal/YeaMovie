@@ -70,8 +70,7 @@ async function fetchData(url, options) {
 
 // render films on page
 function renderFilms(items) {
-    for (item of items) {
-        console.log(item);     
+    for (item of items) {           
         const card = document.createElement('div');
         card.classList.add('card');
         card.id = item.kinopoiskId;
@@ -89,6 +88,57 @@ function renderFilms(items) {
     }
 }
 
-function openFilmDetails() {
-    console.log('It works!');
+async function openFilmDetails(event) {    
+    // получаем id фильма
+    const id = event.currentTarget.id;
+
+    // получаем данные по фильму
+    const data = await fetchData(url + id, options)
+    console.log(data);
+
+    // отображение деталей фильма на странице
+    renderFilmData(data);
+}
+
+// рендеринг данных о фильме
+function renderFilmData(film) {
+    console.log('Render!');
+
+    // очистка предыдущего container-right, если открывается второй и последующий фильмы
+    const prevContainer = document.querySelector('.container-right');
+    prevContainer ? prevContainer.remove() : '';
+
+
+    // render container-right
+    const containerRight = document.createElement('div');
+    containerRight.classList.add('container-right');
+    document.body.insertAdjacentElement('beforeend', containerRight);
+
+    // кнопка закрытия
+    const btnClose = document.createElement('button');
+    btnClose.classList.add('btn-close');
+    btnClose.innerHTML = '<img src="./img/cross.svg" alt="Close" width="24">';
+    containerRight.insertAdjacentElement('afterbegin', btnClose);
+
+    // кнопка закрытия по клику - удаление контейнера со страницы
+    btnClose.onclick = () => {
+        containerRight.remove();
+    }
+
+    // детали фильма
+    const html = 
+    `<div class="film">
+        <div class="film__title">${film.nameRu}</div>
+        <div class="film__img">
+                <img src=${film.posterUrl} alt=${film.nameRu}>
+        </div>
+        <div class="film__desc">
+            <p class="film__details">Год: ${film.year}</p>
+            <p class="film__details">Рейтинг: ${film.ratingKinopoisk}</p>
+            <p class="film__details">Продолжительность: ${film.filmLength} мин.</p>
+            <p class="film__details">Страна: ${film.countries[0]['country']}</p>    
+            <p class="film__text">${film.description}</p>            
+        </div>
+    </div>`;
+    containerRight.insertAdjacentHTML('beforeend', html);
 }
