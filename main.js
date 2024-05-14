@@ -102,12 +102,10 @@ async function openFilmDetails(event) {
 
 // рендеринг данных о фильме
 function renderFilmData(film) {
-    console.log('Render!');
-
     // очистка предыдущего container-right, если открывается второй и последующий фильмы
-    const prevContainer = document.querySelector('.container-right');
-    prevContainer ? prevContainer.remove() : '';
-
+    if (document.querySelector('.container-right')) {
+        document.querySelector('.container-right').remove();
+    }
 
     // render container-right
     const containerRight = document.createElement('div');
@@ -135,10 +133,37 @@ function renderFilmData(film) {
         <div class="film__desc">
             <p class="film__details">Год: ${film.year}</p>
             <p class="film__details">Рейтинг: ${film.ratingKinopoisk}</p>
-            <p class="film__details">Продолжительность: ${film.filmLength} мин.</p>
-            <p class="film__details">Страна: ${film.countries[0]['country']}</p>    
+            <p class="film__details">Продолжительность: ${formatFilmLength(film.filmLength)}</p>
+            <p class="film__details">Страна: ${formatCountry(film.countries)}</p>    
             <p class="film__text">${film.description}</p>            
         </div>
     </div>`;
     containerRight.insertAdjacentHTML('beforeend', html);
+}
+
+// продолжительность фильма в часах и минутах
+function formatFilmLength(value) {
+    let length = '';
+    const hours = Math.floor(value / 60);
+    const minutes = value % 60;
+    if (hours > 0) {
+        length += hours + ' час. ';
+    }
+    if (minutes > 0) {
+        length += minutes + ' мин.';
+    }
+    return length;
+}
+
+// вывод стран, если больше одной
+function formatCountry(countriesArray) {
+    let countriesString = '';
+    for (country of countriesArray) {
+        countriesString += country.country;
+        // добавляем страны через запятую
+        if (countriesArray.indexOf(country) + 1 < countriesArray.length) {
+            countriesString += ', ';
+        }
+    }
+    return countriesString;
 }

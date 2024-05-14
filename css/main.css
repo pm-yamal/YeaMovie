@@ -138,6 +138,7 @@ body {
 
 .film__desc {
     grid-area: desc;
+    font-size: 20px;
 }
 
 .film__details {
