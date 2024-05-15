@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>YeaMovies</title>
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/main.css" />
 </head>
 <body>
     <div class="container-left">
-        <h1 class="title-1">Movies Catalog</h1>
+        <header class="header">            
+            <a href="index.html" class="header__logo">Movies Catalog</a>
+            <form>
+                <input type="text" class="header__search" placeholder="Поиск фильма"/>
+            </form>           
+        </header>    
         <div class="films">
             <!-- <div class="card">
                 <img src="./img/cover.webp" alt="Обливион" class="card__img">
@@ -18,10 +23,13 @@
             </div>             -->
         </div>
         <div class="loader-wrapper none">
-            <div class="lds-ripple"><div></div><div></div></div>
+            <div class="lds-ripple">
+                <div></div>
+                <div></div>
+            </div>
         </div>
         <button class="show-more none">Следующие 20 фильмов</button>
-    </div>    
+    </div>
 
     <!-- <div class="container-right none">
         <button class="btn-close"><img src="./img/cross.svg" alt="Close" width="24"></button>
@@ -42,4 +50,5 @@
 
     <script src="./main.js"></script>
 </body>
+
 </html>
