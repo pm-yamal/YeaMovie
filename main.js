@@ -8,6 +8,7 @@ const options = {
         "Content-Type": "application/json",
     },
 };
+const apiUrlSearch = "https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=";
 
 // запрос через fetch (по умолчанию)
 // fetch(url + 'collections', options)
@@ -69,13 +70,15 @@ async function fetchData(url, options) {
 
 // render films on page
 function renderFilms(items) {
+    //очистка карточек после нажатия поиска
+    document.querySelector(".films").innerHTML = "";
+    // вывод карточек
     for (item of items) {
         const card = document.createElement("div");
         card.classList.add("card");
         card.id = item.kinopoiskId;
         // клик по карточке с фильмом
         card.onclick = openFilmDetails;
-
         const html = `
         <img src=${item.posterUrlPreview} alt="Обливион" class="card__img">
         <h3 class="card__title">${item.nameRu}</h3>
@@ -171,3 +174,14 @@ function formatCountry(countriesArray) {
 }
 
 // поиск фильма
+const form = document.querySelector("form");
+const search = document.querySelector(".header__search");
+
+form.addEventListener("submit", (element) => {
+    element.preventDefault();
+    const searchByWord = `${apiUrlSearch}${search.value}`;
+    if (search.value) {
+        fetchAndRenderFilms(searchByWord);
+        search.value = "";
+    }
+});
